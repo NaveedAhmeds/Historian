@@ -21,6 +21,11 @@ export default function Login() {
 
 	async function handleSubmit(e) {
 		e.preventDefault();
+		if (!user || !password) {
+			setWarning("Error: No input entered");
+			return;
+		}
+
 		try {
 			await authenticateUser(user, password);
 			await updateAtoms();

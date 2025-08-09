@@ -12,6 +12,12 @@ export default function Register() {
 
 	async function handleSubmit(e) {
 		e.preventDefault();
+
+		if (!user || !password || !password2) {
+			setWarning("Error, No input entered");
+			return; // stop form submission early
+		}
+
 		try {
 			await registerUser(user, password, password2);
 			router.push("/login");
